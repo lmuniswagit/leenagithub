@@ -5,6 +5,9 @@ on:
        - main
        - dev
   workflow_dispatch:
+  schedule:
+     - cron: "40 * * * *"
+  
 jobs:
   job1:
    runs-on: ubuntu-latest
