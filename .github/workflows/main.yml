@@ -6,7 +6,7 @@ on:
        - dev
   workflow_dispatch:
   schedule:
-     - cron: "40 * * * *"
+     - cron: "* * * * *"
   
 jobs:
   job1:
