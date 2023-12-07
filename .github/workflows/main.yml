@@ -4,10 +4,10 @@ on:
     branches:
        - main
        - dev
-  workflow_dispatch:
+ 
   schedule:
-     - cron: "* * * * *"
-  
+     - cron: "*/5 * * * *"
+  workflow_dispatch:
 jobs:
   job1:
    runs-on: ubuntu-latest
