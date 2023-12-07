@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 jobs:
   build-job:
-   runs-on: ubuntu-latest
+   runs-on: leena-devops
    steps:
      - name: task 1 for printing OS details
        run: uname -a
@@ -16,7 +16,9 @@ jobs:
      - name: step 3
        run: sleep 30
      - name: step 4
-       run: echo "buildjob and step4 of build-job1 completed"
+       run: |
+        echo "buildjob and step4 of build-job1 completed"
+        touch /tmp/leena
   test-job:
    runs-on: ubuntu-latest
    steps:
