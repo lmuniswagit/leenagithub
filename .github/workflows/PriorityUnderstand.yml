@@ -1,4 +1,5 @@
 name: workflow2
+
 on: 
   push:
     branches:
@@ -7,11 +8,11 @@ on:
     branches:
       - main
 env:
-  USER1: Leena
+  USER1: leena
 jobs:
   build:
      env:
-       USER2: Muniswamy
+       USER2: muniswamy
      runs-on: ubuntu-latest
      steps:
        - name: Checkout
