@@ -51,7 +51,7 @@ jobs:
      steps:
        - name: Checkout
          uses: actions/checkout@v4.1.1
-       - name: step 2
+       - name: step 2 
          run: |
           ls -l
           echo "github repo name is ${{ GITHUB.REPOSITORY }} and branch name is ${{ GITHUB.REF_NAME }} "
