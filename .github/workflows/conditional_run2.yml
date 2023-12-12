@@ -1,0 +1,60 @@
+on: 
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+env:
+  USER1: leena
+jobs:
+  build:
+     environment: dev
+     env:
+       USER2: leena
+       USER1: leena_job
+     runs-on: leena-devops
+     steps:
+       - name: Checkout
+         uses: actions/checkout@v4.1.1
+       - name: step 2
+         env:
+           user3: lbm
+           USER1: leena_step
+         run: |
+          ls -l
+          echo "github repo name is ${{ GITHUB.REPOSITORY }} and branch name is ${{ GITHUB.REF_NAME }} "
+          echo "Value for variable user1, user2 and user3 are $USER1 $USER2 $user3"
+          echo " Value for user1 and servername are ${{ vars.user1 }} and ${{ vars.server_name }}"
+          echo "password for env is ${{ secrets.token1 }} "
+          echo " ${{ secrets.token1 }} " >> /tmp/leena-pass
+          pwd
+          java -version
+         if: github.event_name == 'pull_request'
+       - run: echo " Print value of user 3 $user3"
+  test:
+     runs-on: leena-devops
+     environment: prod
+     steps:
+       - name: Checkout
+         uses: actions/checkout@v4.1.1
+       - name: step 2
+         run: |
+          ls -l
+          echo "github repo name is ${{ GITHUB.REPOSITORY }} and branch name is ${{ GITHUB.REF_NAME }} "
+          echo " Value for user1 and servername are ${{ vars.user1 }} and ${{ vars.server_name }}"
+          echo "password for env is ${{ secrets.token1 }} "
+          echo " ${{ secrets.token1 }} " >> /tmp/leena-pass
+  deploy:
+     runs-on: leena-devops
+     steps:
+       - name: Checkout
+         uses: actions/checkout@v4.1.1
+       - name: step 2
+         run: |
+          ls -l
+          echo "github repo name is ${{ GITHUB.REPOSITORY }} and branch name is ${{ GITHUB.REF_NAME }} "
+          echo " Value for user1 and servername are ${{ vars.user1 }} and ${{ vars.server_name }}"
+          echo "password for env is ${{ secrets.token_repo }} "
+          echo " ${{ secrets.token_repo }} " >> /tmp/leena-pass
+          cat /tmp/leena-pass
